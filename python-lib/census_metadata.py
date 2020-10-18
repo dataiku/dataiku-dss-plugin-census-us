@@ -57,47 +57,46 @@ def get_metadata_sources_from_api(url):
     try:
         r = requests.get(url)
         status = 'ok'
-    
-    except:
-        status = 'The US Census metadata API is not available: %s' % (url)
-        logger.info(status)
-    
-    rr= r.json()
-    v=rr['variables'].keys()
-    
-    df_metadata_sources=pd.DataFrame()
-    for vv in v:
+        rr= r.json()    
+        v=rr['variables'].keys()
         
-        if vv.endswith('E'):
-            dv= rr['variables'][vv]
+        df_metadata_sources=pd.DataFrame()
+        for vv in v:
             
-            ### This json not only contains variables...
-            if 'concept' in dv:
-                if 'predicateType' in dv:
-                    d={'concept':dv['concept']
-                       ,'label':dv['label']
-                       ,'name':vv
-                       ,'type':dv['predicateType']
-                      }
+            if vv.endswith('E'):
+                dv= rr['variables'][vv]
+                
+                ### This json not only contains variables...
+                if 'concept' in dv:
+                    if 'predicateType' in dv:
+                        d={'concept':dv['concept']
+                        ,'label':dv['label']
+                        ,'name':vv
+                        ,'type':dv['predicateType']
+                        }
+                    else:
+                        d={'concept':dv['concept']
+                        ,'label':dv['label']
+                        ,'name':vv
+                        ,'type':'N/A'
+                        }
+                        
                 else:
-                    d={'concept':dv['concept']
-                       ,'label':dv['label']
-                       ,'name':vv
-                       ,'type':'N/A'
-                      }
-                    
-            else:
-                d={'concept':'N/A'
-                   ,'label':'N/A'
-                   ,'name':vv
-                   ,'type':'N/A'
-                  }
+                    d={'concept':'N/A'
+                    ,'label':'N/A'
+                    ,'name':vv
+                    ,'type':'N/A'
+                    }
 
-            df_metadata_sources_tmp=pd.DataFrame([d])
-            df_metadata_sources=pd.concat((df_metadata_sources,df_metadata_sources_tmp),0)
+                df_metadata_sources_tmp=pd.DataFrame([d])
+                df_metadata_sources=pd.concat((df_metadata_sources,df_metadata_sources_tmp),0)
+        
+        return status,df_metadata_sources
     
-    return status,df_metadata_sources
-
+    except Exception as err:
+        status = 'The US Census metadata API is not available: %s' % (url)
+        logger.error("{}. Error: {}".format(status, err))
+        return status,pd.DataFrame()
 
 
 def build_metadata(df_metadata_source,var_list):
