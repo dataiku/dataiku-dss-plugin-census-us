@@ -1,0 +1,15 @@
+{
+  "actions": [
+    {
+      "ts": 1603053890079,
+      "action": "INSTALL",
+      "user": "admin"
+    }
+  ],
+  "gitState": {
+    "enabled": true,
+    "repository": "git@github.com:dataiku/dataiku-contrib.git",
+    "path": "census-us",
+    "checkout": ""
+  }
+}
