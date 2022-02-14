@@ -99,7 +99,7 @@ with output_dataset.get_writer() as writer:
         
         logging.info('Processing batch: %s' % (b))
         
-        df = df[df[P_COL_STREET]<>'']
+        df = df[df[P_COL_STREET] != '']
         
         file_full_path = path_datadir_tmp + '/' + FOLDER_NAME + '/' + 'census_geocode_adresses_' + str(b) + '.csv' 
         
