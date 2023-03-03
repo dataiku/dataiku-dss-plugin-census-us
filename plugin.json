@@ -12,7 +12,7 @@
         "author" : "Dataiku (Nicolas GAKRELIDZ)",
         "icon" : "icon-book",
         "licenseInfo" : "Apache Software License",
-        "url" : "https://www.dataiku.com/dss/plugins/info/us-census.html",
+        "url" : "https://www.dataiku.com/product/plugins/census-us/",
         "tags" : ["Enrichment", "Open Data", "Geospatial"],
         "supportLevel": "NOT_SUPPORTED"
     }
