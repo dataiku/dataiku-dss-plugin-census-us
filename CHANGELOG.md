@@ -5,6 +5,7 @@
   - 3.9
   - 3.10
   - 3.11
+- Update scikit learn to the latest version
 
 ## Version 0.4.1 - Revert release - 2023-03-09
 - Reverted drop of Python 27 support
