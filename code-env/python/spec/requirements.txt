@@ -3,4 +3,4 @@ requests[security]
 xlrd==1.2.0
 scipy
 scikit-learn
-openxyl
+openpxyl
