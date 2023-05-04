@@ -1,5 +1,6 @@
 bs4
 requests[security]
 xlrd==1.2.0
-scikit-learn>=0.20,<0.21
 scipy
+scikit-learn
+openpyxl

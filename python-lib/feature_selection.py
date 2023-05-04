@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-import dataiku
-from sklearn.feature_selection import SelectKBest,SelectPercentile, f_classif,f_regression,chi2
-import numpy as np
+from sklearn.feature_selection import SelectPercentile, f_classif,f_regression,chi2
 from dataiku.customrecipe import *
 
 def univariate_feature_selection(mode,predictors,target):
